@@ -1,10 +1,11 @@
 import React from "react";
+import Dashboard from "./Dashboard";
 
 const Backoffice = () => {
   return (
-    <div>
-      <h1>BACKOFFICE</h1>
-    </div>
+    <>
+      <Dashboard />
+    </>
   );
 };
 
