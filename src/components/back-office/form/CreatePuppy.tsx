@@ -1,9 +1,11 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
+import DogContext from "../../../context/dog-context";
 import { Puppy } from "../../../types";
 import Input from "../../Generic/Input";
 import UploadInput from "../../Generic/UploadInput";
 
 const CreatePuppy = () => {
+  const { setModified } = useContext(DogContext);
   const [userInput, setUserInput] = useState<Puppy>({
     image: undefined,
     breed: "",
@@ -12,10 +14,10 @@ const CreatePuppy = () => {
     info: undefined,
   });
 
-  const submitFormHandler = (e: FormEvent) => {
+  const submitFormHandler = async (e: FormEvent) => {
     e.preventDefault();
 
-    fetch("http://localhost:3001/api/puppies/", {
+    await fetch("http://localhost:3001/api/puppies/", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -36,6 +38,7 @@ const CreatePuppy = () => {
         info: "",
       };
     });
+    setModified();
   };
 
   const setImageUserInputHandler = (image: string | undefined) => {

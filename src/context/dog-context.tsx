@@ -3,12 +3,19 @@ import { Puppies } from "../types";
 
 type DogContext = {
   puppies: Puppies;
+  modified: boolean;
+  setModified: () => void;
 };
 
-const DogContext = React.createContext<DogContext>({ puppies: [] });
+const DogContext = React.createContext<DogContext>({
+  puppies: [],
+  modified: false,
+  setModified: () => {},
+});
 
 export const DogContextProvider = (props: PropsWithChildren) => {
   const [state, setState] = useState<Puppies>([]);
+  const [modified, setModified] = useState<boolean>(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -21,10 +28,20 @@ export const DogContextProvider = (props: PropsWithChildren) => {
     getData();
 
     return () => {};
-  }, []);
+  }, [modified]);
+
+  const modifiedHandler = () => {
+    setModified(!modified);
+  };
 
   return (
-    <DogContext.Provider value={{ puppies: state }}>
+    <DogContext.Provider
+      value={{
+        puppies: state,
+        modified: modified,
+        setModified: () => modifiedHandler(),
+      }}
+    >
       {props.children}
     </DogContext.Provider>
   );
