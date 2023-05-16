@@ -4,7 +4,7 @@ type Props = {
   className: string;
   type: string;
   placeholder: string;
-  value: string | undefined;
+  value: string | undefined | null;
   handlerFn: (userInput: string) => void;
 };
 

@@ -11,15 +11,17 @@ type Props = {
 const CreatePuppy = (props: Props) => {
   const { setModified } = useContext(DogContext);
   const [userInput, setUserInput] = useState<Puppy>({
-    image: undefined,
+    image: null,
     breed: "",
     name: "",
     birthDate: "",
-    info: undefined,
+    info: null,
   });
 
   const submitFormHandler = async (e: FormEvent) => {
     e.preventDefault();
+
+    console.log(userInput);
 
     await fetch("http://localhost:3001/api/puppies/", {
       method: "POST",
@@ -35,11 +37,11 @@ const CreatePuppy = (props: Props) => {
     setUserInput((prevState) => {
       return {
         ...prevState,
-        image: "",
+        image: null,
         breed: "",
         name: "",
         birthDate: "",
-        info: "",
+        info: null,
       };
     });
     setModified();

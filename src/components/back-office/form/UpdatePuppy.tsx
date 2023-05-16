@@ -11,11 +11,11 @@ type Props = {
 const UpdatePuppy = (props: Props) => {
   const { setModified } = useContext(DogContext);
   const [userInput, setUserInput] = useState<Puppy>({
-    image: props.puppy.image ? props.puppy.image : undefined,
+    image: props.puppy.image ? props.puppy.image : null,
     breed: props.puppy.breed,
     name: props.puppy.name,
     birthDate: props.puppy.birthDate,
-    info: props.puppy.info ? props.puppy.info : undefined,
+    info: props.puppy.info ? props.puppy.info : null,
   });
 
   const submitFormHandler = async (e: FormEvent) => {
@@ -34,12 +34,11 @@ const UpdatePuppy = (props: Props) => {
     if (props.puppy.birthDate !== userInput.birthDate) {
       reqBody = { ...reqBody, birthDate: userInput.birthDate };
     }
-    if (props.puppy.info !== userInput.info) {
+    if (props.puppy.info !== userInput.info || props.puppy.info !== null) {
       reqBody = { ...reqBody, info: userInput.info };
     }
 
     console.log(reqBody);
-    console.log(Object.keys(reqBody).length);
 
     if (Object.keys(reqBody).length !== 0) {
       await fetch(`http://localhost:3001/api/puppies/${props.puppy.slug}`, {

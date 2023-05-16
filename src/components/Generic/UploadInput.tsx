@@ -30,8 +30,10 @@ const UploadInput = (props: Props) => {
 
   const handleFileRead = async (event: any) => {
     const file = event.target.files[0];
-    const base64: string = await convertBase64(file);
-    setfile(base64);
+    if (file) {
+      const base64: string = await convertBase64(file);
+      setfile(base64);
+    }
   };
 
   return (
