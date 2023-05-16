@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useContext } from "react";
+import DogContext from "../../../context/dog-context";
 import { Puppy, UpdateReq } from "../../../types";
 import Input from "../../Generic/Input";
 import UploadInput from "../../Generic/UploadInput";
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const UpdatePuppy = (props: Props) => {
+  const { setModified } = useContext(DogContext);
   const [userInput, setUserInput] = useState<Puppy>({
     image: props.puppy.image ? props.puppy.image : undefined,
     breed: props.puppy.breed,
@@ -16,7 +18,7 @@ const UpdatePuppy = (props: Props) => {
     info: props.puppy.info ? props.puppy.info : undefined,
   });
 
-  const submitFormHandler = (e: FormEvent) => {
+  const submitFormHandler = async (e: FormEvent) => {
     e.preventDefault();
 
     let reqBody: UpdateReq = {};
@@ -40,7 +42,7 @@ const UpdatePuppy = (props: Props) => {
     console.log(Object.keys(reqBody).length);
 
     if (Object.keys(reqBody).length !== 0) {
-      fetch(`http://localhost:3001/api/puppies/${props.puppy.slug}`, {
+      await fetch(`http://localhost:3001/api/puppies/${props.puppy.slug}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -51,6 +53,7 @@ const UpdatePuppy = (props: Props) => {
         .then((data) => data.json())
         .then((results) => console.log(results))
         .catch((error) => console.log(error));
+      setModified();
     }
   };
 

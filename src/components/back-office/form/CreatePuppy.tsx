@@ -4,7 +4,11 @@ import { Puppy } from "../../../types";
 import Input from "../../Generic/Input";
 import UploadInput from "../../Generic/UploadInput";
 
-const CreatePuppy = () => {
+type Props = {
+  handlerFn: () => void;
+};
+
+const CreatePuppy = (props: Props) => {
   const { setModified } = useContext(DogContext);
   const [userInput, setUserInput] = useState<Puppy>({
     image: undefined,
@@ -39,6 +43,7 @@ const CreatePuppy = () => {
       };
     });
     setModified();
+    props.handlerFn();
   };
 
   const setImageUserInputHandler = (image: string | undefined) => {

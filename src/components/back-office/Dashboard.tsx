@@ -17,7 +17,7 @@ const Dashboard = () => {
         buttonText="Create new"
         onClick={createModalHandler}
       />
-      {createModal && <CreatePuppy />}
+      {createModal && <CreatePuppy handlerFn={createModalHandler} />}
       <Panel />
     </div>
   );

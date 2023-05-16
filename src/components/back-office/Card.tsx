@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import DogContext from "../../context/dog-context";
 import { Puppy } from "../../types";
 import Button from "../Generic/Button";
 import Modal from "../Generic/Modal";
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const Card = (props: Props) => {
+  const { setModified } = useContext(DogContext);
   const [updateModal, setUpdateModal] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
 
@@ -20,13 +22,14 @@ const Card = (props: Props) => {
     setDeleteModal(!deleteModal);
   };
 
-  const deletePuppy = () => {
-    fetch(`http://localhost:3001/api/puppies/${props.puppy.slug}`, {
+  const deletePuppy = async () => {
+    await fetch(`http://localhost:3001/api/puppies/${props.puppy.slug}`, {
       method: "DELETE",
     })
       .then((data) => data.json())
       .then((results) => console.log(results))
       .catch((error) => console.log(error));
+    setModified();
   };
 
   return (
