@@ -1,4 +1,4 @@
-import "./App.css";
+import "./style/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Backoffice from "./components/back-office/Backoffice";
 import Layout from "./components/front-office/layout/Layout";

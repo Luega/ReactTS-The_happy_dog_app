@@ -39,9 +39,19 @@ const Card = (props: Props) => {
       <h3>{props.puppy.breed}</h3>
       <h4>{props.puppy.birthDate}</h4>
       <h4>{props.puppy.info}</h4>
-      <Button className="" buttonText="Update" onClick={updateModalHandler} />
+      <Button
+        className=""
+        buttonText="Update"
+        buttonIcon=""
+        onClick={updateModalHandler}
+      />
       {updateModal && <UpdatePuppy puppy={props.puppy} />}
-      <Button className="" buttonText="Delete" onClick={deleteModalHandler} />
+      <Button
+        className=""
+        buttonText="Delete"
+        buttonIcon=""
+        onClick={deleteModalHandler}
+      />
       {deleteModal && (
         <Modal
           title="DELETE PUPPY"

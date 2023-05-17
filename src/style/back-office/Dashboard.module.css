@@ -1,0 +1,9 @@
+.dashboard {
+  height: 70vh;
+  background-color: var(--PrimaryColorRegular);
+}
+
+.createButton {
+  color: var(--RegularButtonColorText);
+  background-color: var(--RegularButtonColorBg);
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./style/Variables.css";
+import "./style/index.css";
 import App from "./App";
 import { DogContextProvider } from "./context/dog-context";
 

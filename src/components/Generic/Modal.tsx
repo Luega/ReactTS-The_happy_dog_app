@@ -23,11 +23,13 @@ const DecisionModal = (props: Props) => {
             className=""
             onClick={props.onCancelHandler}
             buttonText={"Cancel"}
+            buttonIcon=""
           />
           <Button
             className=""
             onClick={props.onActionHandler}
             buttonText={"Confirm"}
+            buttonIcon=""
           />
         </div>
       </div>

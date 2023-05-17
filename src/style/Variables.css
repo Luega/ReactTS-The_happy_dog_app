@@ -1,0 +1,21 @@
+:root {
+  --PrimaryColorLight: rgb(255, 255, 255);
+  --PrimaryColorRegular: rgb(251, 247, 244);
+  --PrimaryColorRegular--hover: rgb(238, 230, 226);
+  --PrimaryColorDark: rgb(204, 193, 190);
+  --AlertColor: rgb(0, 0, 0);
+  --PrimaryTextColor: rgb(0, 0, 0);
+  --SecondaryTextColor: rgb(186, 186, 186);
+  --RegularButtonColorBg: rgb(233, 233, 233);
+  --RegularButtonColorText: rgb(71, 95, 132);
+  --MediumAlertButtonColorBg: rgb(252, 238, 229);
+  --MediumAlertButtonColorText: rgb(250, 188, 141);
+  --HighAlertButtonColorBg: rgb(247, 235, 233);
+  --HighAlertButtonColorText: rgb(222, 170, 174);
+  --PrimaryCardBg: rgb(233, 230, 205);
+  --PrimaryCardBgGradient: linear-gradient(
+    142deg,
+    rgba(233, 230, 205, 1) 0%,
+    rgba(149, 171, 177, 1) 100%
+  );
+}
