@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
-import classes from "../../style/Generic/Modal-Form.module.css";
+import classes from "../../style/back-office/Card.module.css";
+import { MdDelete } from "react-icons/md";
+import { FaPen } from "react-icons/fa";
 import DogContext from "../../context/dog-context";
 import { Puppy } from "../../types";
 import Button from "../Generic/Button";
@@ -34,35 +36,45 @@ const Card = (props: Props) => {
   };
 
   return (
-    <div>
-      <img src={props.puppy.image?.replaceAll("&#x2F;", "/")} alt="" />
-      <h1>{props.puppy.name}</h1>
-      <h3>{props.puppy.breed}</h3>
-      <h4>{props.puppy.birthDate}</h4>
-      <h4>{props.puppy.info}</h4>
-      <Button
-        className="my_BackOfficeButton"
-        buttonText="Update"
-        buttonIcon=""
-        onClick={updateModalHandler}
-      />
-      {updateModal && (
-        <UpdatePuppy puppy={props.puppy} handlerFn={updateModalHandler} />
-      )}
-      <Button
-        className="my_BackOfficeButton"
-        buttonText="Delete"
-        buttonIcon=""
-        onClick={deleteModalHandler}
-      />
-      {deleteModal && (
-        <Modal
-          title="DELETE PUPPY"
-          message="Do you want to delete this puppy?"
-          onActionHandler={deletePuppy}
-          onCancelHandler={deleteModalHandler}
-        />
-      )}
+    <div className={`${classes.card} w-3/4 p-3 flex flex-col border`}>
+      <div className="card__image">
+        <img src={props.puppy.image?.replaceAll("&#x2F;", "/")} alt="" />
+      </div>
+      <div className={`${classes.card__box}`}>
+        <div>
+          <h1>{props.puppy.name}</h1>
+          <h3>{props.puppy.breed}</h3>
+          <h4>{props.puppy.birthDate}</h4>
+          <h4>{props.puppy.info}</h4>
+        </div>
+        <div
+          className={`${classes.card__buttons} pt-4 flex justify-around items-center`}
+        >
+          <Button
+            className={`${classes.card__buttonEdit}`}
+            buttonText=""
+            buttonIcon={<FaPen />}
+            onClick={updateModalHandler}
+          />
+          {updateModal && (
+            <UpdatePuppy puppy={props.puppy} handlerFn={updateModalHandler} />
+          )}
+          <Button
+            className={`${classes.card__buttonDelete}`}
+            buttonText=""
+            buttonIcon={<MdDelete />}
+            onClick={deleteModalHandler}
+          />
+          {deleteModal && (
+            <Modal
+              title="DELETE PUPPY"
+              message="Do you want to delete this puppy?"
+              onActionHandler={deletePuppy}
+              onCancelHandler={deleteModalHandler}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 };

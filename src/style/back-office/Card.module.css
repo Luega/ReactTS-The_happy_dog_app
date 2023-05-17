@@ -1,0 +1,57 @@
+.card {
+  margin: 1rem 0;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  background-color: var(--PrimaryColorLight);
+}
+
+.card__box {
+  margin-top: 0.5rem;
+}
+
+.card__buttonEdit,
+.card__buttonDelete {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: var(--PrimaryColorDark);
+  border-radius: 0.25rem;
+}
+
+.card__buttonEdit {
+  background-color: var(--MediumAlertButtonColorBg);
+}
+
+.card__buttonDelete {
+  background-color: var(--HighAlertButtonColorBg);
+}
+
+.card__buttonEdit:hover,
+.card__buttonDelete:hover {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.card__buttonEdit:hover {
+  color: var(--MediumAlertButtonColorText);
+}
+
+.card__buttonDelete:hover {
+  color: var(--HighAlertButtonColorText);
+}
+
+@media screen and (min-width: 450px) {
+  .card__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card__buttonEdit {
+    margin-right: 0.5rem;
+  }
+  .card__buttons {
+    padding: 0.5rem 0;
+  }
+}

@@ -6,13 +6,10 @@ const Panel = () => {
   const context = useContext(DogContext);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
       {context.puppies.length !== 0 ? (
         context.puppies.map((puppy, index) => (
-          <div key={puppy.slug} className="p-3">
-            <h2>{index + 1}</h2>
-            <Card puppy={puppy} />
-          </div>
+          <Card key={puppy.slug} puppy={puppy} />
         ))
       ) : (
         <h2>NO PUPPIES</h2>
