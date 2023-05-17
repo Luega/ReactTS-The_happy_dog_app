@@ -1,3 +1,4 @@
+import classes from "../../style/Generic/Modal-Form.module.css";
 import Button from "./Button";
 
 type Props = {
@@ -10,15 +11,13 @@ type Props = {
 const DecisionModal = (props: Props) => {
   return (
     <div>
-      <div onClick={props.onCancelHandler} />
-      <div>
-        <div>
-          <h2>{props.title}</h2>
-        </div>
-        <div>
+      <div className="my_Backdrop" onClick={props.onCancelHandler} />
+      <div className={`${classes.modal} my_Modal`}>
+        <div className={`${classes.modal__info}`}>
+          <h1>{props.title}</h1>
           <p>{props.message}</p>
         </div>
-        <div>
+        <div className={`${classes.modal__buttons}`}>
           <Button
             className=""
             onClick={props.onCancelHandler}

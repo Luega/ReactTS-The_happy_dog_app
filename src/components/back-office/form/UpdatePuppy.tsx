@@ -1,4 +1,5 @@
 import React, { FormEvent, useState, useContext } from "react";
+import classes from "../../../style/Generic/Modal-Form.module.css";
 import DogContext from "../../../context/dog-context";
 import { Puppy, UpdateReq } from "../../../types";
 import Input from "../../Generic/Input";
@@ -6,6 +7,7 @@ import UploadInput from "../../Generic/UploadInput";
 
 type Props = {
   puppy: Puppy;
+  handlerFn: () => void;
 };
 
 const UpdatePuppy = (props: Props) => {
@@ -83,43 +85,58 @@ const UpdatePuppy = (props: Props) => {
   };
 
   return (
-    <form onSubmit={submitFormHandler}>
-      <Input
-        className=""
-        type="text"
-        placeholder="breed"
-        value={userInput.breed}
-        handlerFn={(breed) => setBreedUserInputHandler(breed)}
-      />
-      <Input
-        className=""
-        type="text"
-        placeholder="name"
-        value={userInput.name}
-        handlerFn={(name) => setNameUserInputHandler(name)}
-      />
-      <Input
-        className=""
-        type="text"
-        placeholder="birthDate"
-        value={userInput.birthDate}
-        handlerFn={(birthDate) => setBirthDateUserInputHandler(birthDate)}
-      />
-      <Input
-        className=""
-        type="text"
-        placeholder="info"
-        value={userInput.info}
-        handlerFn={(info) => setInfoUserInputHandler(info)}
-      />
-      <UploadInput
-        className=""
-        handlerFn={(image) => setImageUserInputHandler(image)}
-        multiple={false}
-        accept="image/gif, image/jpeg, image/png"
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <div onClick={props.handlerFn} className="my_Backdrop" />
+      <form
+        onSubmit={submitFormHandler}
+        className={`${classes.modal} my_Modal`}
+      >
+        <h1>UPDATE PUPPY</h1>
+        <label>Breed:</label>
+        <Input
+          className=""
+          type="text"
+          placeholder="breed"
+          value={userInput.breed}
+          handlerFn={(breed) => setBreedUserInputHandler(breed)}
+        />
+        <label>Name:</label>
+        <Input
+          className=""
+          type="text"
+          placeholder="name"
+          value={userInput.name}
+          handlerFn={(name) => setNameUserInputHandler(name)}
+        />
+        <label>Birth Date:</label>
+        <Input
+          className=""
+          type="text"
+          placeholder="birthDate"
+          value={userInput.birthDate}
+          handlerFn={(birthDate) => setBirthDateUserInputHandler(birthDate)}
+        />
+        <label>Info:</label>
+        <Input
+          className=""
+          type="text"
+          placeholder="info"
+          value={userInput.info}
+          handlerFn={(info) => setInfoUserInputHandler(info)}
+        />
+        <label>Info:</label>
+        <UploadInput
+          className=""
+          handlerFn={(image) => setImageUserInputHandler(image)}
+          multiple={false}
+          accept="image/gif, image/jpeg, image/png"
+        />
+        <div className={`${classes.modal__buttons}`}>
+          <button type="submit">Submit</button>
+          <button onClick={props.handlerFn}>Back</button>
+        </div>
+      </form>
+    </>
   );
 };
 

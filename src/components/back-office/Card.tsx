@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import classes from "../../style/Generic/Modal-Form.module.css";
 import DogContext from "../../context/dog-context";
 import { Puppy } from "../../types";
 import Button from "../Generic/Button";
@@ -45,7 +46,9 @@ const Card = (props: Props) => {
         buttonIcon=""
         onClick={updateModalHandler}
       />
-      {updateModal && <UpdatePuppy puppy={props.puppy} />}
+      {updateModal && (
+        <UpdatePuppy puppy={props.puppy} handlerFn={updateModalHandler} />
+      )}
       <Button
         className=""
         buttonText="Delete"

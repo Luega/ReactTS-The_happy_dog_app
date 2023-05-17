@@ -1,0 +1,60 @@
+.modal {
+  padding: 3rem;
+  background-color: var(--PrimaryColorDark);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+.modal h1 {
+  font-size: 2rem;
+  color: var(--PrimaryHeadersColor);
+  margin-bottom: 1rem;
+  align-self: center;
+}
+
+.modal h1,
+.modal label {
+  font-weight: 600;
+}
+
+.modal input {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--PrimaryColorLight);
+  border: 1px solid var(--SecondaryTextColor);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.25rem;
+}
+
+.modal__info {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.25rem;
+  background-color: var(--PrimaryColorLight);
+}
+
+.modal__buttons {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: end;
+}
+
+.modal__buttons :first-child {
+  margin-right: 1rem;
+}
+
+.modal__buttons button {
+  padding: 0.5rem 1rem;
+  color: var(--RegularButtonColorText);
+  font-weight: 600;
+  background-color: var(--RegularButtonColorBg);
+  border: 1px solid var(--SecondaryTextColor);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.25rem;
+}
+
+.modal__buttons button:hover {
+  background-color: var(--PrimaryColorLight);
+}
