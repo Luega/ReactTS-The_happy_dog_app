@@ -1,5 +1,5 @@
 .modal {
-  padding: 3rem;
+  padding: 2rem;
   background-color: var(--PrimaryColorDark);
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
 }
 
 .modal h1 {
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: var(--PrimaryHeadersColor);
   margin-bottom: 1rem;
   align-self: center;
@@ -27,7 +27,7 @@
   border-radius: 0.25rem;
 }
 
-.modal__info {
+.modal p {
   padding: 1rem 0.5rem;
   text-align: center;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -57,4 +57,15 @@
 
 .modal__buttons button:hover {
   background-color: var(--PrimaryColorLight);
+}
+
+@media screen and (min-width: 600px) {
+  .modal h1 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .modal h1 {
+    font-size: 2rem;
+  }
 }

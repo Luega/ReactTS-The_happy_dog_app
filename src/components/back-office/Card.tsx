@@ -41,7 +41,7 @@ const Card = (props: Props) => {
       <h4>{props.puppy.birthDate}</h4>
       <h4>{props.puppy.info}</h4>
       <Button
-        className=""
+        className="my_BackOfficeButton"
         buttonText="Update"
         buttonIcon=""
         onClick={updateModalHandler}
@@ -50,7 +50,7 @@ const Card = (props: Props) => {
         <UpdatePuppy puppy={props.puppy} handlerFn={updateModalHandler} />
       )}
       <Button
-        className=""
+        className="my_BackOfficeButton"
         buttonText="Delete"
         buttonIcon=""
         onClick={deleteModalHandler}

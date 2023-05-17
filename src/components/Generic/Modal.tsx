@@ -20,14 +20,14 @@ const DecisionModal = (props: Props) => {
         <div className={`${classes.modal__buttons}`}>
           <Button
             className=""
-            onClick={props.onCancelHandler}
-            buttonText={"Cancel"}
+            onClick={props.onActionHandler}
+            buttonText={"Confirm"}
             buttonIcon=""
           />
           <Button
             className=""
-            onClick={props.onActionHandler}
-            buttonText={"Confirm"}
+            onClick={props.onCancelHandler}
+            buttonText={"Cancel"}
             buttonIcon=""
           />
         </div>
