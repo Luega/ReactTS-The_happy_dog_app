@@ -1,9 +1,11 @@
-import React, { FormEvent, useContext, useState } from "react";
+import { useContext } from "react";
+import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import classes from "../../../style/Generic/Modal-Form.module.css";
 import DogContext from "../../../context/dog-context";
 import { Puppy } from "../../../types";
 import Input from "../../Generic/Input";
 import UploadInput from "../../Generic/UploadInput";
+import convertBase64 from "../../../utils/convertBase64";
 
 type Props = {
   handlerFn: () => void;
@@ -11,18 +13,18 @@ type Props = {
 
 const CreatePuppy = (props: Props) => {
   const { setModified } = useContext(DogContext);
-  const [userInput, setUserInput] = useState<Puppy>({
-    image: null,
-    breed: "",
-    name: "",
-    birthDate: "",
-    info: null,
-  });
+  const methods = useForm();
 
-  const submitFormHandler = async (e: FormEvent) => {
-    e.preventDefault();
+  const onSubmit = methods.handleSubmit(async (data) => {
+    const imgBase64: string | null = await convertBase64(data["Image:"]);
 
-    console.log(userInput);
+    const puppy: Puppy = {
+      image: imgBase64 ? imgBase64 : null,
+      breed: data["Breed:"],
+      name: data["Name:"],
+      birthDate: data["Date of birth:"],
+      info: data["Details:"] ? data["Details:"] : null,
+    };
 
     await fetch("http://localhost:3001/api/puppies/", {
       method: "POST",
@@ -30,104 +32,103 @@ const CreatePuppy = (props: Props) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userInput),
+      body: JSON.stringify(puppy),
     })
       .then((data) => data.json())
       .then((results) => console.log(results))
       .catch((error) => console.log(error));
-    setUserInput((prevState) => {
-      return {
-        ...prevState,
-        image: null,
-        breed: "",
-        name: "",
-        birthDate: "",
-        info: null,
-      };
-    });
+
     setModified();
     props.handlerFn();
-  };
-
-  const setImageUserInputHandler = (image: string | undefined) => {
-    setUserInput((prevState) => {
-      return { ...prevState, image: image };
-    });
-  };
-  const setNameUserInputHandler = (name: string) => {
-    setUserInput((prevState) => {
-      return { ...prevState, name: name };
-    });
-  };
-  const setBreedUserInputHandler = (breed: string) => {
-    setUserInput((prevState) => {
-      return { ...prevState, breed: breed };
-    });
-  };
-  const setBirthDateUserInputHandler = (birthDate: string) => {
-    setUserInput((prevState) => {
-      return { ...prevState, birthDate: birthDate };
-    });
-  };
-  const setInfoUserInputHandler = (info: string) => {
-    setUserInput((prevState) => {
-      return { ...prevState, info: info };
-    });
-  };
+  });
 
   return (
-    <>
+    <FormProvider {...methods}>
       <div onClick={props.handlerFn} className="my_Backdrop" />
       <form
-        onSubmit={submitFormHandler}
+        onSubmit={(e) => e.preventDefault()}
+        noValidate
+        autoComplete="off"
         className={`${classes.modal} my_Modal`}
       >
         <h1>CREATE NEW PUPPY</h1>
-        <label>Breed:</label>
         <Input
-          className=""
+          label="Breed:"
+          name="Breed:"
+          id="breed"
           type="text"
-          placeholder="breed"
-          value={userInput.breed}
-          handlerFn={(breed) => setBreedUserInputHandler(breed)}
+          className=""
+          placeholder="Breed..."
+          validation={{
+            required: {
+              value: true,
+              message: "required",
+            },
+          }}
         />
-        <label>Name:</label>
         <Input
-          className=""
+          label="Name:"
+          name="Name:"
+          id="name"
           type="text"
-          placeholder="name"
-          value={userInput.name}
-          handlerFn={(name) => setNameUserInputHandler(name)}
+          className=""
+          placeholder="Name..."
+          validation={{
+            required: {
+              value: true,
+              message: "required",
+            },
+          }}
         />
-        <label>Birth Date:</label>
         <Input
-          className=""
+          label="Date of birth:"
+          name="Date of birth:"
+          id="birthDate"
           type="text"
-          placeholder="birthDate"
-          value={userInput.birthDate}
-          handlerFn={(birthDate) => setBirthDateUserInputHandler(birthDate)}
+          className=""
+          placeholder="YYYY-MM-DD"
+          validation={{
+            required: {
+              value: true,
+              message: "required",
+            },
+          }}
         />
-        <label>Info:</label>
         <Input
-          className=""
+          label="Details:"
+          name="Details:"
+          id="info"
           type="text"
-          placeholder="info"
-          value={userInput.info}
-          handlerFn={(info) => setInfoUserInputHandler(info)}
+          className=""
+          placeholder="About..."
+          validation={{
+            required: {
+              value: true,
+              message: "required",
+            },
+          }}
         />
-        <label>Info:</label>
         <UploadInput
+          label="Image:"
+          name="Image:"
+          id="image"
+          type="file"
           className=""
-          handlerFn={(image) => setImageUserInputHandler(image)}
           multiple={false}
           accept="image/gif, image/jpeg, image/png"
+          validation={{
+            required: {
+              value: true,
+              message: "required",
+            },
+          }}
         />
         <div className={`${classes.modal__buttons}`}>
-          <button type="submit">Submit</button>
+          <button onClick={onSubmit}>Submit</button>
           <button onClick={props.handlerFn}>Back</button>
         </div>
       </form>
-    </>
+    </FormProvider>
   );
 };
 

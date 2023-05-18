@@ -1,49 +1,53 @@
 import React, { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { EventEmitter } from "stream";
+import { findInputError } from "../../utils/findInputError";
+import { isFormInvalid } from "../../utils/isFormInvalid";
+import InputError from "./InputError";
 
 type Props = {
-  handlerFn: (file: string | undefined) => void;
+  label: string;
+  id: string;
+  type: string;
+  className: string;
   multiple: boolean;
   accept: string;
-  className: string;
+  validation: any;
+  name: string;
 };
 
-const UploadInput = (props: Props) => {
-  const [file, setfile] = useState<string | undefined>(undefined);
+const UploadInput = ({
+  label,
+  id,
+  type,
+  className,
+  multiple,
+  accept,
+  validation,
+  name,
+}: Props) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
-  useEffect(() => props.handlerFn(file), [file]);
-
-  const convertBase64 = (file: any): any => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
-  const handleFileRead = async (event: any) => {
-    const file = event.target.files[0];
-    if (file) {
-      const base64: string = await convertBase64(file);
-      setfile(base64);
-    }
-  };
+  const inputError: any = findInputError(errors, label);
+  const isInvalid: any = isFormInvalid(inputError);
 
   return (
     <>
+      <label htmlFor={id} className="font-semibold capitalize">
+        {label}
+      </label>
+      {isInvalid && <InputError message={inputError.error.message} />}
       <input
-        className={props.className}
-        type="file"
-        multiple={props.multiple}
-        accept={props.accept}
-        onChange={(e) => handleFileRead(e)}
+        id={id}
+        type={type}
+        className={className}
+        multiple={multiple}
+        accept={accept}
+        // onChange={(e) => handleFileRead(e)}
+        {...register(name, validation)}
       />
     </>
   );

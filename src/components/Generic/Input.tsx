@@ -1,22 +1,50 @@
-import React, { useRef } from "react";
+import { useFormContext } from "react-hook-form";
+import { findInputError } from "../../utils/findInputError";
+import { isFormInvalid } from "../../utils/isFormInvalid";
+import InputError from "./InputError";
 
 type Props = {
-  className: string;
+  label: string;
+  id: string;
   type: string;
+  className: string;
   placeholder: string;
-  value: string | undefined | null;
-  handlerFn: (userInput: string) => void;
+  validation: any;
+  name: string;
 };
 
-const Input = (props: Props) => {
+const Input = ({
+  label,
+  type,
+  id,
+  placeholder,
+  className,
+  validation,
+  name,
+}: Props) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  const inputError: any = findInputError(errors, label);
+  const isInvalid: any = isFormInvalid(inputError);
+
   return (
     <>
+      <label htmlFor={id}>{label}</label>
+      {isInvalid && (
+        <InputError
+          message={inputError.error.message}
+          key={inputError.error.message}
+        />
+      )}
       <input
-        className={props.className}
-        type={props.type}
-        placeholder={props.placeholder}
-        value={props.value ? props.value : ""}
-        onChange={(e) => props.handlerFn(e.target.value)}
+        id={id}
+        type={type}
+        className={className}
+        placeholder={placeholder}
+        {...register(name, validation)}
       />
     </>
   );
