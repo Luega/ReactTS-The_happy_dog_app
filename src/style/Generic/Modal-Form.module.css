@@ -59,6 +59,10 @@
   background-color: var(--PrimaryColorLight);
 }
 
+.error {
+  color: var(--ErrorColorText);
+}
+
 @media screen and (min-width: 600px) {
   .modal h1 {
     font-size: 1.5rem;

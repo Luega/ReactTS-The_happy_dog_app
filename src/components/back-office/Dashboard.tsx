@@ -3,6 +3,7 @@ import classes from "../../style/back-office/Dashboard.module.css";
 import Panel from "./Panel";
 import CreatePuppy from "./form/CreatePuppy";
 import Button from "../Generic/Button";
+import { FaAddressCard } from "react-icons/fa";
 
 const Dashboard = () => {
   const [createModal, setCreateModal] = useState<boolean>(false);
@@ -17,10 +18,11 @@ const Dashboard = () => {
     >
       <Button
         className={`${classes.createButton} p-3 border sticky top-0 shadow-sm`}
-        buttonText="Create"
-        buttonIcon=""
+        buttonText=""
+        buttonIcon={<FaAddressCard />}
         onClick={createModalHandler}
       />
+
       {createModal && <CreatePuppy handlerFn={createModalHandler} />}
       <Panel />
     </div>

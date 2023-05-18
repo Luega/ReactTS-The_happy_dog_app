@@ -1,9 +1,11 @@
+import classes from "../../style/Generic/Modal-Form.module.css";
+
 type Props = {
   message: string;
 };
 
 const InputError = ({ message }: Props) => {
-  return <div>{message}</div>;
+  return <div className={`${classes.error}`}>{message}</div>;
 };
 
 export default InputError;

@@ -62,7 +62,11 @@ const CreatePuppy = (props: Props) => {
           validation={{
             required: {
               value: true,
-              message: "required",
+              message: "Required",
+            },
+            pattern: {
+              value: /^[a-zA-Z]+$/,
+              message: "Only characters are allowed",
             },
           }}
         />
@@ -76,7 +80,11 @@ const CreatePuppy = (props: Props) => {
           validation={{
             required: {
               value: true,
-              message: "required",
+              message: "Required",
+            },
+            pattern: {
+              value: /^[a-zA-Z]+$/,
+              message: "Only characters are allowed",
             },
           }}
         />
@@ -90,7 +98,12 @@ const CreatePuppy = (props: Props) => {
           validation={{
             required: {
               value: true,
-              message: "required",
+              message: "Required",
+            },
+            pattern: {
+              value:
+                /^(?:2[0-9]{3})-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$$/,
+              message: "Must have year between 2000-2999 and format YYYY-MM-DD",
             },
           }}
         />
@@ -102,9 +115,13 @@ const CreatePuppy = (props: Props) => {
           className=""
           placeholder="About..."
           validation={{
-            required: {
-              value: true,
-              message: "required",
+            pattern: {
+              value: /[a-zA-Z]+/,
+              message: "Must have at list one character.",
+            },
+            maxLength: {
+              value: 255,
+              message: "Must be max 255 characters",
             },
           }}
         />
@@ -116,16 +133,11 @@ const CreatePuppy = (props: Props) => {
           className=""
           multiple={false}
           accept="image/gif, image/jpeg, image/png"
-          validation={{
-            required: {
-              value: true,
-              message: "required",
-            },
-          }}
+          validation={{}}
         />
         <div className={`${classes.modal__buttons}`}>
           <button onClick={onSubmit}>Submit</button>
-          <button onClick={props.handlerFn}>Back</button>
+          <button onClick={props.handlerFn}>Cancel</button>
         </div>
       </form>
     </FormProvider>

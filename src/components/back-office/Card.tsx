@@ -10,6 +10,8 @@ import UpdatePuppy from "./form/UpdatePuppy";
 
 type Props = {
   puppy: Puppy;
+  deleted: string;
+  setDeleted: (text: string) => void;
 };
 
 const Card = (props: Props) => {
@@ -26,12 +28,16 @@ const Card = (props: Props) => {
   };
 
   const deletePuppy = async () => {
-    await fetch(`http://localhost:3001/api/puppies/${props.puppy.slug}`, {
-      method: "DELETE",
-    })
+    const respText: string = await fetch(
+      `http://localhost:3001/api/puppies/${props.puppy.slug}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((data) => data.json())
-      .then((results) => console.log(results))
+      .then((results) => results)
       .catch((error) => console.log(error));
+    props.setDeleted(respText);
     setModified();
   };
 
