@@ -25,7 +25,7 @@ const Panel = () => {
   }, [deleted]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center md:flex-row md:flex-wrap">
       {deletedBol && <p className={`${classes.deleted_info}`}>{deleted}</p>}
       {context.puppies.length !== 0 ? (
         context.puppies.map((puppy, index) => (

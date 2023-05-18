@@ -43,7 +43,7 @@ const Card = (props: Props) => {
 
   return (
     <div className={`${classes.card} w-3/4 p-3 flex flex-col border`}>
-      <div className="card__image">
+      <div className={`${classes.card__image}`}>
         <img src={props.puppy.image?.replaceAll("&#x2F;", "/")} alt="" />
       </div>
       <div className={`${classes.card__box}`}>

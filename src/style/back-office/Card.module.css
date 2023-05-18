@@ -10,8 +10,6 @@
 
 .card__buttonEdit,
 .card__buttonDelete {
-  width: 60px;
-  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,5 +51,25 @@
   }
   .card__buttons {
     padding: 0.5rem 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    margin: 1rem;
+    width: calc((50%) - 2rem);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    margin: 1rem;
+    width: calc((100% / 3) - 2rem);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .card {
+    margin: 1rem;
+    width: calc((100% / 4) - 2rem);
   }
 }
