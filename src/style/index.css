@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: "Libre Baskerville", serif;
+}
+
 .my_Backdrop {
   position: fixed;
   top: 0;

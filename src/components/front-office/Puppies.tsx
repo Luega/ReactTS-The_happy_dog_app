@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import classes from "../../style/front-office/puppies.module.css";
 import DogContext from "../../context/dog-context";
-import PuppyCard from "./layout/PuppyCard";
+import PuppyCard from "./PuppyCard";
 
 const Puppies = () => {
   const { puppies } = useContext(DogContext);
@@ -28,8 +29,9 @@ const Puppies = () => {
   }, []);
 
   return (
-    <div>
-      <h1>PUPPIES</h1>
+    <div
+      className={`${classes.puppiesContainer} min-h-screen py-8 px-20 flex flex-wrap`}
+    >
       {puppies.length !== 0 ? (
         puppies.map((puppy) => (
           <PuppyCard
@@ -39,7 +41,7 @@ const Puppies = () => {
           />
         ))
       ) : (
-        <h1>NO PUPPIES</h1>
+        <h1 className="text-2xl bold">Loading...</h1>
       )}
     </div>
   );
