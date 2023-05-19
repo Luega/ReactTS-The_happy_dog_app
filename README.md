@@ -1,47 +1,81 @@
-# Getting Started with Create React App
+# The Happy Dog App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Happy Dog App is a React-based web application fully responsive designed to showcase adorable puppies. It consists of two main components: the front office and the back office. The front office displays cards of different dogs, while the back office allows you to manage the dog data.
+The back office add, edit and delete data from an external API (https://github.com/Luega/ExpressTS-puppiesAPI).
+To set up the app, you will need to use both the frontend and backend components.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Installation](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#installation)
+- [Usage](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#usage)
+- [Technologies](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#technologies)
+- [License](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#license)
 
-### `npm start`
+![My Image](screenshot/screenshot1.png)![My Image](screenshot/screenshot2.png)
+![My Image](screenshot/screenshot3.png)
+![My Image](screenshot/screenshot4.png)![My Image](screenshot/screenshot5.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1.  Clone the repository
 
-### `npm test`
+```bash
+ git clone https://github.com/Luega/ReactTS-The_happy_dog_app.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Change the working directory
 
-### `npm run build`
+```bash
+  cd /ReactTS-The_happy_dog_app
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the development server: npm run start
 
-### `npm run eject`
+5. Open your browser and navigate to http://localhost:3000 to access the front office.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+6. Open your browser and navigate to http://localhost:3000/admin to access the back office.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To use the Puppy App, you will need:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Install and run the backend API https://github.com/Luega/ExpressTS-puppiesAPI.
 
-## Learn More
+2. Configure the environment variables:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Open the .env file in the root directory of the frontend project.
+- Add the following line and replace yourClientIDfromUnsplashAPI with your Unsplash API client ID:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# ReactTS-dogShelter
+```bash
+  REACT_APP_UNSPLASH_CLIENTID=yourClientIDfromUnsplashAPI
+```
+
+## Features
+
+1. Front Office:
+
+- Display cards of various dogs.
+- Fetch a default image from the Unsplash API if a card doesn't have an image.
+
+2. Back Office (/admin):
+
+- Add new dogs with their details.
+- Edit existing dog information.
+- Delete dogs from the displayed collection.
+
+## Technologies
+
+- React: The project is built using the React library, enabling the creation of reusable UI components and managing component state efficiently.
+- React Hooks: The app utilizes React hooks such as useState, useEffect, useForm, and useContext to manage state, side effects, and form handling.
+- React Router: The React Router library is used to handle routing and navigation within the application.
+- Tailwind CSS: The app employs Tailwind CSS for styling and utilizes its utility classes for a streamlined and responsive design.
+
+## License
+
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License.
