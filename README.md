@@ -6,14 +6,16 @@ To set up the app, you will need to use both the frontend and backend components
 
 ## Table of Contents
 
-- [Installation](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#installation)
-- [Usage](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#usage)
-- [Technologies](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#technologies)
-- [License](https://github.com/Luega/FirstTryThree.js/blob/main/README.md#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [License](#license)
 
-![My Image](screenshot/screenshot1.png)![My Image](screenshot/screenshot2.png)
+![My Image](screenshot/screenshot1.png)
+![My Image](screenshot/screenshot2.png)
 ![My Image](screenshot/screenshot3.png)
-![My Image](screenshot/screenshot4.png)![My Image](screenshot/screenshot5.png)
+![My Image](screenshot/screenshot4.png)
+![My Image](screenshot/screenshot5.png)
 
 ## Installation
 
