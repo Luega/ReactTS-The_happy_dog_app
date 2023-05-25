@@ -12,8 +12,6 @@ To set up the app, you will need to use both the frontend and backend components
 - [License](#license)
 
 ![My Image](screenshot/screenshot1.png)
-![My Image](screenshot/screenshot2.png)
-![My Image](screenshot/screenshot3.png)
 ![My Image](screenshot/screenshot4.png)
 ![My Image](screenshot/screenshot5.png)
 
